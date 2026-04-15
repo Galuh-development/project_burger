@@ -127,7 +127,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top bg-white shadow-sm border-bottom border-warning border-3">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0 text-decoration-none">
+      <a href="{{ route('') }}" class="logo d-flex align-items-center me-auto me-xl-0 text-decoration-none">
         <img src="{{ asset('images/logo brgr.png') }}" alt="logo" style="max-height: 50px;">
         <h1 class="sitename ms-2 mb-0" style="color: #212529;"> My Burger <span class="text-warning">Queen</span></h1>
       </a>

@@ -28,10 +28,10 @@ Route::get('/', function () {
     return redirect()->route('backend.login'); 
 }); 
 
-Route::get('/', function () { 
-    // return view('welcome'); 
-    return redirect()->route('beranda.index'); 
-}); 
+// Route::get('/', function () { 
+//     // return view('welcome'); 
+//     return redirect()->route('beranda.index'); 
+// }); 
 
 // Frontend 
 Route::get('/beranda', [FrontBerandaController::class, 'index'])->name('beranda.index');
@@ -48,7 +48,7 @@ Route::get('backend/login', [LoginController::class, 'loginBackend'])->name('bac
 Route::post('backend/login', [LoginController::class, 'authenticateBackend'])->name('backend.login'); 
 Route::post('backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 
-//master 
+//master data  
 Route::resource('backend/user', UserController::class, ['as' => 'backend'])->middleware('auth');
 Route::resource('backend/kategori', KategoriController::class, ['as' => 'backend'])->middleware('auth'); 
 Route::resource('backend/produk', ProdukController::class, ['as' => 'backend'])->middleware('auth');

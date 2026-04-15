@@ -86,7 +86,7 @@
                                         </button>
                                     </a>
 
-                                    <a href="{{ route('backend.produk.show', $row->id) }}"
+                                    <a href="{{ route('backend.produk.show', $row) }}"
                                        title="Kelola Gambar">
                                         <button type="button"
                                             class="btn btn-outline-info btn-sm">

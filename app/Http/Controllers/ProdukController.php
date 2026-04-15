@@ -88,9 +88,9 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Produk $produk)
     {
-        $produk = Produk::with('fotoProduk')->findOrFail($id); 
+        $produk->load('fotoProduk'); 
         $kategori = Kategori::orderBy('nama_kategori', 'asc')->get(); 
         return view('backend.v_produk.show', [ 
             'judul' => 'Detail Produk', 
@@ -102,12 +102,11 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $produk = Produk::findOrFail($id); 
-$kategori = Kategori::orderBy('nama_kategori', 'asc')->get(); 
-return view('backend.v_produk.edit', [ 
-'judul' => 'Ubah Produk',  'edit' => $produk, 
+    public function edit(Produk $produk)
+    { 
+        $kategori = Kategori::orderBy('nama_kategori', 'asc')->get(); 
+        return view('backend.v_produk.edit', [ 
+            'judul' => 'Ubah Produk',  'edit' => $produk, 
             'kategori' => $kategori 
         ]); 
     }
@@ -115,12 +114,11 @@ return view('backend.v_produk.edit', [
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Produk $request, Produk $produk)
     {
          //ddd($request); 
-        $produk = Produk::findOrFail($id); 
         $rules = [ 
-            'nama_produk' => 'required|max:255|unique:produk,nama_produk,' . $id, 
+            'nama_produk' => 'required|max:255|unique:produk,nama_produk,' . $produk->id, 
             'kategori_id' => 'required', 
             'status' => 'required', 
             'detail' => 'required', 
@@ -187,9 +185,8 @@ $produk->foto;
         return redirect()->route('backend.produk.index')->with('success', 'Data berhasil 
 diperbaharui');
     }
-  public function destroy($id) 
-    { 
-        $produk = Produk::findOrFail($id); 
+  public function destroy(Produk $produk) 
+    {  
         $directory = public_path('storage/img-produk/'); 
  
         if ($produk->foto) { 
@@ -219,7 +216,7 @@ diperbaharui');
         } 
  
         // Hapus foto produk lainnya di tabel foto_produk 
-        $fotoProduks = FotoProduk::where('produk_id', $id)->get(); 
+        $fotoProduks = FotoProduk::where('produk_id', $produk->id)->get(); 
         foreach ($fotoProduks as $fotoProduk) { 
             $fotoPath = $directory . $fotoProduk->foto; 
             if (file_exists($fotoPath)) { 
