@@ -28,10 +28,10 @@ Route::get('/', function () {
     return redirect()->route('backend.login'); 
 }); 
 
-// Route::get('/', function () { 
-//     // return view('welcome'); 
-//     return redirect()->route('beranda.index'); 
-// }); 
+Route::get('/', function () { 
+    // return view('welcome'); 
+    return redirect()->route('beranda.index'); 
+}); 
 
 // Frontend 
 Route::get('/beranda', [FrontBerandaController::class, 'index'])->name('beranda.index');

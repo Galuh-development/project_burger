@@ -12,15 +12,15 @@ class Produk extends Model
     protected $table = "produk"; 
     protected $guarded = ['id']; 
 protected static function boot()
-{
-    parent::boot();
-
-    static::creating(function ($model) {
-        if (empty($model->uuid)) {
-            $model->uuid = (string) Str::uuid();
-        }
-    });
-}
+    {
+        parent::boot();
+    
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
+        });
+    }
 
 public function getRouteKeyName()
 {
