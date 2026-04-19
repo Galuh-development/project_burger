@@ -37,13 +37,15 @@
                                                  alt="{{ $produk->nama_produk }}">
                                         </a>
                                     </div>
-
                                     <h4 class="fw-bold mb-2">{{ $produk->nama_produk }}</h4>
                                     
                                     <p class="text-muted small mb-3">
                                         {{ Str::limit(strip_tags($produk->detail), 80) }}
                                     </p>
-
+                                    <a href="{{ route('produk.show', $produk->id) }}" class="btn btn-warning">
+                                     Lihat Detail
+                                    </a>
+                                    
                                     <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
                                         <span class="fs-5 fw-bold text-dark">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
                                         <a href="#" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold shadow-sm">

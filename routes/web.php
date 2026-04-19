@@ -38,7 +38,7 @@ Route::get('/beranda', [FrontBerandaController::class, 'index'])->name('beranda.
 Route::get('/produk', [FrontProdukController::class, 'index'])->name('produk.index');
 Route::get('/kategori', [FrontKatgoriControler::class, 'index'])->name('kategori.index');
 
-// Route::get('/produk/{id}', [FrontProdukController::class, 'show'])->name('produk.show');
+Route::get('/produk/{id}', [FrontProdukController::class, 'show'])->name('produk.show');
 // Route::get('/kategori/{id}', [FrontKatgoriControler::class, 'show'])->name('kategori.show');
 
 

@@ -14,4 +14,10 @@ class ProdukController extends Controller
 
     return view('frontend.v_produk.index', compact('kategori'));
 }
+
+public function show($id)
+{
+    $produk = Produk::findOrFail($id); // Ambil data atau 404 kalau ga ada
+    return view('frontend.v_produk.show', compact('produk'));
+}
 }

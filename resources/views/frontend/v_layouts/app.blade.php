@@ -26,93 +26,8 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('frontend/template/css/main.css') }}" rel="stylesheet">
-<style>
-  /* 1. Mematikan garis merah bawaan template (biasanya menggunakan ::before) */
-.navmenu ul li a::before {
-    display: none !important;
-    content: none !important;
-}
-
-/* 2. Mematikan border-bottom jika template menggunakannya */
-.navmenu ul li a {
-    border-bottom: none !important;
-    position: relative;
-    padding: 8px 0;
-    color: #212529 !important;
-}
-
-/* 3. Memastikan hanya garis kuning kita yang muncul */
-.navmenu ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px; 
-    bottom: -2px; 
-    left: 0;
-    background-color: #ffc107 !important; /* Kuning Burger Queen */
-    transition: width 0.3s ease-in-out;
-    display: block !important;
-}
-
-/* 4. Munculkan garis kuning saat hover */
-.navmenu ul li a:hover::after,
-.navmenu ul li a.active::after {
-    width: 100%;
-}
-
-/* 5. Tetap jaga teks agar tidak berubah warna merah */
-.navmenu ul li a:hover {
-    color: #212529 !important;
-    background: none !important;
-}
-/* Warna default ikon (lingkaran abu-abu/gelap) */
-.footer .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-right: 10px;
-    transition: 0.3s;
-    text-decoration: none;
-}
-
-/* Efek Hover: Background jadi Kuning, Ikon jadi Hitam */
-.footer .social-links a:hover {
-    background-color: #ffc107; /* Warna warning Bootstrap */
-    color: #212529;            /* Warna teks gelap agar kontras */
-    border-color: #ffc107;
-    transform: translateY(-3px); /* Sedikit efek melompat ke atas */
-}
-/* --- SCROLL TOP --- */
-.scroll-top {
-  background-color: #ffc107 !important; /* Warna kuning warning */
-  color: #212529 !important;            /* Warna ikon (hitam agar kontras) */
-}
-
-.scroll-top:hover {
-  background-color: #ffca2c !important; /* Kuning sedikit terang saat hover */
-  color: #000 !important;
-}
-
-/* --- PRELOADER --- */
-#preloader:before {
-  /* Mengubah warna garis putar (spinner) menjadi kuning */
-  border-top: 3px solid #ffc107 !important;
-}
-
-#preloader:after {
-  /* Opsional: Jika ada lingkaran luar, beri warna kuning transparan */
-  border: 15px solid #ffc107 !important;
-  opacity: 0.1;
-}
-</style>
-
-
+  
+  
   <!-- =======================================================
   * Template Name: Yummy
   * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
@@ -223,10 +138,95 @@
 </footer>
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <style>
+    /* 1. Mematikan garis merah bawaan template (biasanya menggunakan ::before) */
+  .navmenu ul li a::before {
+      display: none !important;
+      content: none !important;
+  }
+  
+  /* 2. Mematikan border-bottom jika template menggunakannya */
+  .navmenu ul li a {
+      border-bottom: none !important;
+      position: relative;
+      padding: 8px 0;
+      color: #212529 !important;
+  }
+  
+  /* 3. Memastikan hanya garis kuning kita yang muncul */
+  .navmenu ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px; 
+      bottom: -2px; 
+      left: 0;
+      background-color: #ffc107 !important; /* Kuning Burger Queen */
+      transition: width 0.3s ease-in-out;
+      display: block !important;
+  }
+  
+  /* 4. Munculkan garis kuning saat hover */
+  .navmenu ul li a:hover::after,
+  .navmenu ul li a.active::after {
+      width: 100%;
+  }
+  
+  /* 5. Tetap jaga teks agar tidak berubah warna merah */
+  .navmenu ul li a:hover {
+      color: #212529 !important;
+      background: none !important;
+  }
+  /* Warna default ikon (lingkaran abu-abu/gelap) */
+  .footer .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-right: 10px;
+      transition: 0.3s;
+      text-decoration: none;
+  }
+  
+  /* Efek Hover: Background jadi Kuning, Ikon jadi Hitam */
+  .footer .social-links a:hover {
+      background-color: #ffc107; /* Warna warning Bootstrap */
+      color: #212529;            /* Warna teks gelap agar kontras */
+      border-color: #ffc107;
+      transform: translateY(-3px); /* Sedikit efek melompat ke atas */
+  }
+  /* --- SCROLL TOP --- */
+  .scroll-top {
+    background-color: #ffc107 !important; /* Warna kuning warning */
+    color: #212529 !important;            /* Warna ikon (hitam agar kontras) */
+  }
+  
+  .scroll-top:hover {
+    background-color: #ffca2c !important; /* Kuning sedikit terang saat hover */
+    color: #000 !important;
+  }
+  
+  /* --- PRELOADER --- */
+  #preloader:before {
+    /* Mengubah warna garis putar (spinner) menjadi kuning */
+    border-top: 3px solid #ffc107 !important;
+  }
+  
+  #preloader:after {
+    /* Opsional: Jika ada lingkaran luar, beri warna kuning transparan */
+    border: 15px solid #ffc107 !important;
+    opacity: 0.1;
+  }
+  </style>
 <script src="{{ asset('frontend/template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('frontend/template/vendor/php-email-form/validate.js') }}"></script>
 <script src="{{ asset('frontend/template/vendor/aos/aos.js') }}"></script>
