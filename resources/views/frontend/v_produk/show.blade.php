@@ -38,7 +38,7 @@
                                 <button type="submit" class="btn btn-warning btn-lg px-5 rounded-pill shadow-sm">
                                     <i class="bi bi-cart-plus me-2"></i> Tambah ke Keranjang
                                 </button>
-                                <a href="{{ route('produk.index') }}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill ms-2">
+                                <a href="{{ route('v1.frontend.produk.index') }}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill ms-2">
                                     Kembali
                                 </a>
                             </div>

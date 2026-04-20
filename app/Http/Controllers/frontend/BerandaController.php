@@ -9,7 +9,7 @@ use App\Models\Kategori;
 
 class BerandaController extends Controller
 {
-    public function index()
+    public function berandaFrontend()
     {
         $kategori = Kategori::all();
         $produk = Produk::with('kategori')->latest()->get();

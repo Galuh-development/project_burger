@@ -49,10 +49,10 @@
       <nav id="navmenu" class="navmenu">
     <ul>
         <li>
-            <a href="{{ route('beranda.index') }}" class="{{ Request::is('beranda*') ? 'active' : '' }}">Beranda</a>
+            <a href="{{ route('v1.frontend.beranda.index') }}" class="{{ Request::is('beranda*') ? 'active' : '' }}">Beranda</a>
         </li>
         <li>
-            <a href="{{ route('produk.index') }}" class="{{ Request::is('produk*') ? 'active' : '' }}">Menu</a>
+            <a href="{{ route('v1.frontend.produk.index') }}" class="{{ Request::is('produk*') ? 'active' : '' }}">Menu</a>
         </li>
         <li class="dropdown">
             <a href="#" class="{{ Request::is('akun*') ? 'active' : '' }}">

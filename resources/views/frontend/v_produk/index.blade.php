@@ -42,7 +42,7 @@
                                     <p class="text-muted small mb-3">
                                         {{ Str::limit(strip_tags($produk->detail), 80) }}
                                     </p>
-                                    <a href="{{ route('produk.show', $produk->id) }}" class="btn btn-warning">
+                                    <a href="{{ route('v1.frontend.produk.show', $produk->id) }}" class="btn btn-warning">
                                      Lihat Detail
                                     </a>
                                     

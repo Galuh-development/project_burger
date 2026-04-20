@@ -12,7 +12,7 @@
         </p>
         
         <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-          <a href="{{ route('produk.index') }}" class="btn-get-started shadow-sm" style="background-color: #ffc107; color: #212529; border: none; font-weight: bold; padding: 12px 30px; border-radius: 50px; text-decoration: none;">
+          <a href="{{ route('v1.frontend.produk.index') }}" class="btn-get-started shadow-sm" style="background-color: #ffc107; color: #212529; border: none; font-weight: bold; padding: 12px 30px; border-radius: 50px; text-decoration: none;">
             Lihat Menu Kami
           </a>
         </div>
