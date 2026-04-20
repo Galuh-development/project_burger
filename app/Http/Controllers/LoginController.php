@@ -26,7 +26,7 @@ class LoginController extends Controller
                 return back()->with('error', 'User belum aktif'); 
             } 
             $request->session()->regenerate(); 
-            return redirect()->intended(route('backend.beranda')); 
+            return redirect()->intended(route('backend.beranda.index')); 
         } 
         return back()->with('error', 'Login Gagal'); 
     } 

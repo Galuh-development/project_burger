@@ -6,7 +6,7 @@
     <div class="col-12">
 
         <!-- Tombol Tambah -->
-        <a href="{{ route('backend.produk.create') }}" class="mb-3 d-inline-block">
+        <a href="{{ route('v1.backend.produk.create') }}" class="mb-3 d-inline-block">
             <button type="button" class="btn btn-warning text-dark shadow-sm">
                 <i class="fas fa-plus"></i> Tambah Produk
             </button>
@@ -78,7 +78,7 @@
 
                                 <!-- Aksi -->
                                 <td>
-                                    <a href="{{ route('backend.produk.edit', $row->id) }}"
+                                    <a href="{{ route('v1.backend.produk.edit', $row->id) }}"
                                        title="Ubah Data">
                                         <button type="button"
                                             class="btn btn-outline-warning btn-sm">
@@ -86,7 +86,7 @@
                                         </button>
                                     </a>
 
-                                    <a href="{{ route('backend.produk.show', $row) }}"
+                                    <a href="{{ route('v1.backend.produk.show', $row) }}"
                                        title="Kelola Gambar">
                                         <button type="button"
                                             class="btn btn-outline-info btn-sm">
@@ -95,7 +95,7 @@
                                     </a>
 
                                     <form method="POST"
-                                        action="{{ route('backend.produk.destroy', $row->id) }}"
+                                        action="{{ route('v1.backend.produk.destroy', $row->id) }}"
                                         class="d-inline">
                                         @method('delete')
                                         @csrf

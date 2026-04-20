@@ -6,7 +6,7 @@
     <div class="col-12">
 
         <!-- Tombol Tambah -->
-        <a href="{{ route('backend.user.create') }}" class="mb-3 d-inline-block">
+        <a href="{{ route('v1.backend.user.create') }}" class="mb-3 d-inline-block">
             <button type="button" class="btn btn-warning text-dark shadow-sm">
                 <i class="fas fa-plus"></i> Tambah User
             </button>
@@ -73,7 +73,7 @@
 
                                 <!-- Aksi -->
                                 <td>
-                                    <a href="{{ route('backend.user.edit', $row->id) }}"
+                                    <a href="{{ route('v1.backend.user.edit', $row->id) }}"
                                         title="Ubah Data">
                                         <button type="button"
                                             class="btn btn-outline-warning btn-sm">
@@ -82,7 +82,7 @@
                                     </a>
 
                                     <form method="POST"
-                                        action="{{ route('backend.user.destroy', $row->id) }}"
+                                        action="{{ route('v1.backend.user.destroy', $row->id) }}"
                                         class="d-inline">
                                         @method('delete')
                                         @csrf
