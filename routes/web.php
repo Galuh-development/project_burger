@@ -2,29 +2,39 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () { 
-//     // return view('welcome'); 
-//     return redirect()->route('v1.backend.login'); 
-// }); 
+Route::get('/', function () { 
+    // return view('welcome'); 
+    return redirect()->route('v1.backend.login'); 
+}); 
 
 Route::get('/', function () { 
     // return view('welcome'); 
-    return redirect()->route('beranda.index'); 
+    return redirect()->route('v1.frontend.beranda.index'); 
 }); 
 
 // ==========FRONTEND=============
-
+// NO AUT
 Route::prefix('v1')->name('v1.')->group(function(){
     Route::prefix('frontend')->name('frontend.')->group(function() {
         Route::prefix('produk')->name('produk.')->controller(App\Http\Controllers\frontend\ProdukController::class)->group(function(){
             Route::get('/', 'index')->name('index');
             Route::get('/{id}', 'show')->name('show');
     });
-    Route::prefix('beranda')->name('beranda.')->controller(App\Http\Controllers\frontend\BerandaController::class)->group(function(){
-        Route::get('/', 'berandaFrontend')->name('index');
+        Route::prefix('beranda')->name('beranda.')->controller(App\Http\Controllers\frontend\BerandaController::class)->group(function(){
+            Route::get('/', 'berandaFrontend')->name('index');
+            });
         });
-    });
 });
+// // AUT
+// Route::prefix('v1')->name('v1.')->middlewar('auth')->group(function(){
+//     Route::prefix('frontend')->name('frontend.')->group(function() {
+//         Route::prefix('cart')->name('cart.')->controller(App\Http\Controllers\frontend\CartController::class)->group(function(){
+//             Route::get('/','index')->name('index');
+//             Route::post('/{id}','store')->name('store');
+//             Route::delete('/{id}', 'destroy')->name('destroy');
+//         });
+//     });
+// });
 
 //Route::get('/beranda', [FrontBerandaController::class, 'index'])->name('beranda.index');
 //Route::get('/produk', [FrontProdukController::class, 'index'])->name('produk.index');
@@ -36,6 +46,7 @@ Route::prefix('v1')->name('v1.')->group(function(){
 
 
 // ==========BACKEND============
+// NO AUT
 Route::prefix('v1')->name('v1.')->group(function () {
 
     Route::prefix('backend')->name('backend.')->group(function () {
@@ -52,7 +63,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
 
 });
 //MASTER DATA 
-    
+// AUT   
 Route::prefix('v1')->name('v1.')->middleware('auth')->group(function(){
 Route::prefix('backend')->name('backend.')->group(function() {
     //Beranda

@@ -21,7 +21,8 @@ protected static function boot()
             }
         });
     }
-
+public $incrementing = false; 
+protected $keyType = 'string'; 
 public function getRouteKeyName()
 {
     return 'uuid'; // Memberitahu Laravel untuk mencari berdasarkan UUID, bukan ID

@@ -28,31 +28,32 @@
                     <div class="row gy-4">
                         @foreach ($kat->produk as $produk)
                             <div class="col-lg-4 col-md-6">
-                                <div class="menu-item-card p-3 shadow-sm border rounded-4 bg-white h-100 text-center">
-                                    
-                                    <div class="overflow-hidden rounded-4 mb-3" style="height: 250px;">
+                               <div class="menu-item-card p-3 shadow-sm border rounded-4 bg-white h-100 text-center" 
+                                     onclick="location.href='{{ route('v1.frontend.produk.show', $produk->id) }}'" 
+                                     style="cursor: pointer;">
+
+                                    <div class="overflow-hidden rounded-4 mb-3" style="height: 250px;" onclick="event.stopPropagation();">
                                         <a href="{{ asset('storage/img-produk/'.$produk->foto) }}" class="glightbox">
                                             <img src="{{ asset('storage/img-produk/'.$produk->foto) }}" 
                                                  class="img-fluid w-100 h-100 object-fit-cover transition-img" 
                                                  alt="{{ $produk->nama_produk }}">
                                         </a>
                                     </div>
+
                                     <h4 class="fw-bold mb-2">{{ $produk->nama_produk }}</h4>
-                                    
+
                                     <p class="text-muted small mb-3">
                                         {{ Str::limit(strip_tags($produk->detail), 80) }}
                                     </p>
-                                    <a href="{{ route('v1.frontend.produk.show', $produk->id) }}" class="btn btn-warning">
-                                     Lihat Detail
-                                    </a>
-                                    
+
                                     <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
                                         <span class="fs-5 fw-bold text-dark">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>
-                                        <a href="#" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold shadow-sm">
+
+                                        <a href="#" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold shadow-sm" 
+                                           onclick="event.stopPropagation();">
                                             <i class="bi bi-cart-plus me-1"></i> Pesan
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
                         @endforeach
