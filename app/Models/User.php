@@ -53,4 +53,5 @@ class User extends Authenticatable
     const ADMIN      = '1';
     const STAFF      = '2';
     const MANAGER    = '3';
+    const CUSTOMER   = '4';
 } 

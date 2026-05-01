@@ -16,33 +16,18 @@ class CartController extends Controller
     }
 
     // Proses tambah ke keranjang
-    public function store(Request $request, $id)
-    {
-        // Pastikan user login dulu
-        if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'Login dulu ya!');
-        }
-
-        // Cek apakah produk yang sama sudah ada di keranjang user ini
-        $cek = Cart::where('user_id', auth()->id())->where('produk_id', $id)->first();
-
-        if ($cek) {
-            // Kalau ada, cukup update quantity-nya saja
-            $cek->update([
-                'qty' => $cek->qty + $request->qty
-            ]);
-        } else {
-            // Kalau belum ada, buat baris baru
-            Cart::create([
-                'user_id' => auth()->id(),
-                'produk_id' => $id,
-                'qty' => $request->qty
-            ]);
-        }
-
-        return redirect()->route('cart.index')->with('success', 'Berhasil masuk keranjang!');
+    public function store(Request $request, $id) 
+{
+    // Cek apakah user sudah login
+    if (!auth()->check()) {
+        return redirect()->route('v1.form.login')->with('error', 'Silakan login dulu untuk memesan!');
     }
 
+    // Nanti lo tinggal tambahin logic simpan ke database di sini
+    // Contoh: Cart::create(['user_id' => auth()->id(), 'produk_id' => $id, 'qty' => $request->qty]);
+
+    return redirect()->route('v1.frontend.cart.index')->with('success', 'Burger Queen masuk keranjang!');
+}
     // Hapus satu item dari keranjang
     public function destroy($id)
     {

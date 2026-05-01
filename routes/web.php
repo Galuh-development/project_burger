@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () { 
-    // return view('welcome'); 
-    return redirect()->route('v1.backend.login'); 
-}); 
+// Route::get('/', function () { 
+//     // return view('welcome'); 
+//     return redirect()->route('v1.backend.login'); 
+// }); 
 
 Route::get('/', function () { 
     // return view('welcome'); 
-    return redirect()->route('v1.frontend.beranda.index'); 
+    return redirect()->route('v1.form.login'); 
 }); 
 
 // ==========FRONTEND=============
@@ -26,15 +26,15 @@ Route::prefix('v1')->name('v1.')->group(function(){
         });
 });
 // // AUT
-// Route::prefix('v1')->name('v1.')->middlewar('auth')->group(function(){
-//     Route::prefix('frontend')->name('frontend.')->group(function() {
-//         Route::prefix('cart')->name('cart.')->controller(App\Http\Controllers\frontend\CartController::class)->group(function(){
-//             Route::get('/','index')->name('index');
-//             Route::post('/{id}','store')->name('store');
-//             Route::delete('/{id}', 'destroy')->name('destroy');
-//         });
-//     });
-// });
+Route::prefix('v1')->name('v1.')->middleware(['auth', 'is_customer'] )->group(function(){
+    Route::prefix('frontend')->name('frontend.')->group(function() {
+        Route::prefix('cart')->name('cart.')->controller(App\Http\Controllers\frontend\CartController::class)->group(function(){
+            Route::get('/','index')->name('index');
+            Route::post('/{id}','store')->name('store');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+        });
+    });
+});
 
 //Route::get('/beranda', [FrontBerandaController::class, 'index'])->name('beranda.index');
 //Route::get('/produk', [FrontProdukController::class, 'index'])->name('produk.index');
@@ -49,13 +49,13 @@ Route::prefix('v1')->name('v1.')->group(function(){
 // NO AUT
 Route::prefix('v1')->name('v1.')->group(function () {
 
-    Route::prefix('backend')->name('backend.')->group(function () {
+    Route::prefix('form')->name('form.')->group(function () {
 
-        Route::controller(App\Http\Controllers\backend\LoginController::class)->group(function () {
+        Route::controller(App\Http\Controllers\login\LoginController::class)->group(function () {
 
-            Route::get('login', 'loginBackend')->name('login');
-            Route::post('login', 'authenticateBackend')->name('login.process');
-            Route::post('logout', 'logoutBackend')->name('logout');
+            Route::get('login', 'loginForm')->name('login');
+            Route::post('login', 'authenticate')->name('login.process');
+            Route::post('logout', 'logoutForm')->name('logout');
 
         });
 
@@ -73,8 +73,8 @@ Route::prefix('backend')->name('backend.')->group(function() {
     //user
     Route::prefix('user')->name('user.')->controller(App\Http\Controllers\backend\UserController::class)->group(function(){
         Route::get('/', 'index')->name('index');
-        Route::get('/{id}', 'show')->name('show');
         Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'show')->name('show');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
@@ -87,8 +87,8 @@ Route::prefix('backend')->name('backend.')->group(function() {
     //kategori
     Route::prefix('kategori')->name('kategori.')->controller(App\Http\Controllers\backend\KategoriController::class)->group(function(){
         Route::get('/', 'index')->name('index');
-        Route::get('/{id}', 'show')->name('show');
         Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'show')->name('show');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
@@ -97,8 +97,8 @@ Route::prefix('backend')->name('backend.')->group(function() {
     //produk
     Route::prefix('produk')->name('produk.')->controller(App\Http\Controllers\backend\ProdukController::class)->group(function(){
         Route::get('/', 'index')->name('index');
-        Route::get('/{id}', 'show')->name('show');
         Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'show')->name('show');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');

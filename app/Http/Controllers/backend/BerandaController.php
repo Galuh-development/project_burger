@@ -4,22 +4,15 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+// Tambahkan model jika nanti butuh data statistik di dashboard
+// use App\Models\Produk; 
 
 class BerandaController extends Controller
 {
     public function berandaBackend() 
     { 
         return view('backend.v_beranda.index', [ 
-            'judul' => 'Halaman Beranda',
-                ]); 
-    } 
-
-      public function index() 
-    { 
-        $Produk = Produk::where('status', 1)->orderBy('updated_at', 'desc')->paginate(6); 
-        return view('frontend.v_beranda.index', [ 
-            'judul' => 'Halaman Beranda', 
-            'produk' => $Produk, 
+            'judul' => 'Dashboard Admin Burger Queen',
         ]); 
     } 
 }

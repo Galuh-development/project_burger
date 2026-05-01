@@ -157,10 +157,22 @@
                                 @endif 
                             </a> 
                             <div class="dropdown-menu dropdown-menu-right user-dd animated"> 
-                                <a class="dropdown-item" href="{{ route('v1.backend.user.edit', Auth::user()->id) }}"><i class="ti-user m-r-5 m-l-5"></i> Profil Saya</a> 
-                                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('keluar-app').submit();"><i class="fa fa-power-off m-r-5 m-l-5"></i> Keluar</a> 
-                                <div class="dropdown-divider"></div> 
-                            </div> 
+    <a class="dropdown-item" href="{{ route('v1.backend.user.edit', Auth::user()->id) }}">
+        <i class="ti-user m-r-5 m-l-5"></i> Profil Saya
+    </a> 
+
+    <!-- Link Keluar -->
+    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('keluar-app').submit();">
+        <i class="fa fa-power-off m-r-5 m-l-5"></i> Keluar
+    </a> 
+
+    <!-- Form Logout Tersembunyi (WAJIB ADA) -->
+    <form id="keluar-app" action="{{ route('v1.form.logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
+    <div class="dropdown-divider"></div> 
+</div> 
                         </li>
                         <!-- ============================================================== --> 
                         <!-- User profile and search --> 
@@ -319,7 +331,7 @@
     </script> 
 
 <!-- form keluar app --> 
-<form id="keluar-app" action="{{ route('v1.backend.logout') }}" method="POST" class="d
+<form id="keluar-app" action="{{ route('v1.form.logout') }}" method="POST" class="d
 none"> 
 @csrf 
 </form> 

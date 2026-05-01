@@ -12,8 +12,13 @@ class BerandaController extends Controller
     public function berandaFrontend()
     {
         $kategori = Kategori::all();
-        $produk = Produk::with('kategori')->latest()->get();
+        // Ambil produk yang statusnya aktif saja (misal 1)
+        $produk = Produk::with('kategori')->where('status', 1)->latest()->get();
 
-        return view('frontend.v_beranda.index', compact('kategori', 'produk'));
+        return view('frontend.v_beranda.index', [
+            'judul' => 'Selamat Datang di Burger Queen',
+            'kategori' => $kategori,
+            'produk' => $produk
+        ]);
     }
 }

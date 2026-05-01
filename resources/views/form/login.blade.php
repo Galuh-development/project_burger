@@ -54,7 +54,7 @@
                     </div> 
                     @endif 
                     <!-- errorEnd --> 
-                    <form class="form-horizontal m-t-20" id="loginform" action="{{ route('v1.backend.login') }}" method="post"> 
+                    <form class="form-horizontal m-t-20" id="loginform" action="{{ route('v1.form.login') }}" method="post"> 
                         @csrf 
                         <div class="row p-b-30"> 
                             <div class="col-12"> 

@@ -13,13 +13,6 @@ protected function redirectTo(Request $request): ?string
 if ($request->expectsJson()) { 
 return null; 
 } 
-// Check if the request URI contains 'backend' or 'frontend' 
-if ($request->is('backend/*')) { 
-return route('backend.login'); 
-} elseif ($request->is('frontend/*')) { /* akan digunakan jika frontend telah tersedia */ 
-return route('frontend.login'); /* akan digunakan jika frontend telah tersedia */ 
-} 
-// Default redirect if none of the above match 
-return route('backend.login'); /* ganti ke frontend jika telah tersedia  */ 
+return route('v1.form.login'); 
 } 
 } 

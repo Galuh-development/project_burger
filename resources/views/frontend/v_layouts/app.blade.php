@@ -62,8 +62,20 @@
                 <li><a href="#">Profil Saya</a></li>
                 <li><a href="#">Pesanan Saya</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a href="#" class="text-danger">Keluar</a></li>
+
+                <!-- Link Keluar dengan Trigger JS -->
+                <li>
+                    <a href="#" class="text-danger" 
+                       onclick="event.preventDefault(); document.getElementById('logout-frontend').submit();">
+                       Keluar
+                    </a>
+                </li>
             </ul>
+
+              <!-- Form Logout Tersembunyi (Posisikan di luar UL juga nggak apa-apa) -->
+              <form id="logout-frontend" action="{{ route('v1.form.logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
         </li>
     </ul>
     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
