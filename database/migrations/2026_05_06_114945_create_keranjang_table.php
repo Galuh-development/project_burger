@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user', function (Blueprint $table) {
-            $table->enum('role', ['0', '1', '2', '3', '4'])->default('4')->change();
-        });
+        Schema::create('keranjang', function (Blueprint $table) {
+            $table->id();
+            // Relasi ke tabel user 
+            $table->foreignId('user_id')->constrained('user')->onDelete('cascade');
+            $table->timestamps();
+});
     }
 
     /**
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('keranjang');
     }
 };

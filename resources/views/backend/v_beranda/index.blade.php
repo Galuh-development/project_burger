@@ -27,12 +27,12 @@
                 Anda masuk sebagai 
                 <span class="badge px-3 py-1 fw-semibold"
                       style="background-color:
-                        @if(Auth::user()->role == \App\Models\User::SUPERADMIN) #f4b400
+                        @if(Auth::user()->role == \App\Models\User::DEVELOPER) #f4b400
                         @elseif(Auth::user()->role == \App\Models\User::ADMIN) #ff7043
                         @elseif(Auth::user()->role == \App\Models\User::STAFF) #26a69a
                         @elseif(Auth::user()->role == \App\Models\User::MANAGER) #42a5f5
                         @endif; color:#fff; border-radius: 12px;">
-                    @if (Auth::user()->role == \App\Models\User::SUPERADMIN) Super Admin
+                    @if (Auth::user()->role == \App\Models\User::DEVELOPER) Developer
                     @elseif (Auth::user()->role == \App\Models\User::ADMIN) Admin
                     @elseif (Auth::user()->role == \App\Models\User::STAFF) Staff
                     @elseif (Auth::user()->role == \App\Models\User::MANAGER) Manager

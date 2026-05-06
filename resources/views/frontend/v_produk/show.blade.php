@@ -23,36 +23,36 @@
 
                     <hr class="my-4">
 
-                   <form action="#" method="POST">
-    @csrf
-    {{-- Kita kirim ID lewat URL (Opsi A), jadi input hidden product_id udah gak perlu lagi --}}
+                  {{-- Ganti '#' dengan route simpan keranjang lo --}}
+                    <form action="{{ route('v1.frontend.keranjang.store', $produk->id) }}" method="POST">
+                        @csrf
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="qty" class="form-label mb-0">Jumlah Porsi:</label>
-        </div>
-        
-        <div class="col-3">
-            {{-- Input Jumlah --}}
-            <input type="number" name="qty" id="qty" class="form-control" value="1" min="1" oninput="updateTotal()">
-            
-            {{-- Hidden input buat bantu JavaScript ngitung total harga (opsional) --}}
-            <input type="hidden" id="harga-satuan" value="{{ $produk->harga }}">
-        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="qty" class="form-label mb-0">Jumlah Porsi:</label>
+                            </div>
 
-        <div class="col-12 mt-4">
-            {{-- Tombol Submit --}}
-            <button type="submit" class="btn btn-warning btn-lg px-5 rounded-pill shadow-sm">
-                <i class="bi bi-cart-plus me-2"></i> Tambah ke Keranjang
-            </button>
+                            <div class="col-3">
+                                {{-- Input Jumlah --}}
+                                <input type="number" name="qty" id="qty" class="form-control" value="1" min="1" oninput="updateTotal()">
 
-            {{-- Tombol Kembali --}}
-            <a href="{{ route('v1.frontend.produk.index') }}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill ms-2">
-                Kembali
-            </a>
-        </div>
-    </div>
-</form>
+                                {{-- Hidden input harga buat JS (Opsional) --}}
+                                <input type="hidden" id="harga-satuan" value="{{ $produk->harga }}">
+                            </div>
+
+                            <div class="col-12 mt-4 d-grid d-md-flex gap-3 justify-content-md-start">
+                                {{-- Tombol Submit --}}
+                                <button type="submit" class="btn btn-warning btn-lg px-md-5 rounded-pill shadow-sm fw-bold">
+                                    <i class="bi bi-cart-plus me-2"></i> Tambah ke Keranjang
+                                </button>
+                            
+                                {{-- Tombol Kembali --}}
+                                <a href="{{ route('v1.frontend.produk.index') }}" class="btn btn-outline-secondary btn-lg px-md-4 rounded-pill">
+                                    Kembali
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

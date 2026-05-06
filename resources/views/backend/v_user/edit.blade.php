@@ -6,7 +6,7 @@
     <div class="row"> 
         <div class="col-12"> 
             <div class="card"> 
-                <form action="{{ route('backend.user.update', $edit->id) }}" method="post" enctype="multipart/form-data"> 
+                <form action="{{ route('v1.backend.user.update', $edit->id) }}" method="post" enctype="multipart/form-data"> 
                     @method('put') 
                     @csrf 
 
@@ -38,9 +38,9 @@
     <select name="role" class="form-control @error('role') is-invalid @enderror">
         <option value="">- Pilih Hak Akses -</option>
 
-        <option value="{{ \App\Models\User::SUPERADMIN }}"
-            {{ old('role', $edit->role) == \App\Models\User::SUPERADMIN ? 'selected' : '' }}>
-            Super Admin
+        <option value="{{ \App\Models\User::DEVELOPER }}"
+            {{ old('role', $edit->role) == \App\Models\User::DEVELOPER ? 'selected' : '' }}>
+            Developer
         </option>
 
         <option value="{{ \App\Models\User::ADMIN }}"
@@ -56,6 +56,11 @@
         <option value="{{ \App\Models\User::MANAGER }}"
             {{ old('role', $edit->role) == \App\Models\User::MANAGER ? 'selected' : '' }}>
             Manager
+        </option>
+
+        <option value="{{ \App\Models\User::CUSTOMER }}"
+        {{ old('role') == \App\Models\User::CUSTOMER ? 'selected' : '' }}>
+        Manager
         </option>
     </select>
 
@@ -117,7 +122,7 @@
                     <div class="border-top"> 
                         <div class="card-body"> 
                             <button type="submit" class="btn btn bg-warning">Perbaharui</button> 
-                            <a href="{{ route('backend.user.index') }}"> 
+                            <a href="{{ route('v1.backend.user.index') }}"> 
                                 <button type="button" class="btn btn-secondary">Kembali</button>
                             </a> 
                         </div> 

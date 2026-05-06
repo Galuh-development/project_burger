@@ -11,7 +11,7 @@ class Produk extends Model
     public $timestamps = true; 
     protected $table = "produk"; 
     protected $guarded = ['id']; 
-protected static function boot()
+    protected static function boot()
     {
         parent::boot();
     

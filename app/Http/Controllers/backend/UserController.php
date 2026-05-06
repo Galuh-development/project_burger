@@ -35,10 +35,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([ 
-            'nama' => 'required|max:255', 
-            'email' => 'required|max:255|email|unique:user', 
+            'nama' => 'required|max:30', 
+            'email' => 'required|max:50|email|unique:user', 
             'role' => 'required', 
-            'hp' => 'required|min:10|max:13', 
+            'hp' => 'required|min:10|max:15', 
             'password' => 'required|min:4|confirmed', 
             'foto' => 'image|mimes:jpeg,jpg,png,gif|file|max:1024', 
         ], $messages = [ 
@@ -100,10 +100,10 @@ class UserController extends Controller
          //ddd($request); 
         $user = User::findOrFail($id); 
         $rules = [ 
-            'nama' => 'required|max:255', 
+            'nama' => 'required|max:50', 
             'role' => 'required', 
             'status' => 'required', 
-            'hp' => 'required|min:10|max:13', 
+            'hp' => 'required|min:10|max:15', 
             'foto' => 'image|mimes:jpeg,jpg,png,gif|file|max:1024', 
         ]; 
         $messages = [ 
@@ -112,7 +112,7 @@ class UserController extends Controller
         ]; 
  
         if ($request->email != $user->email) { 
-            $rules['email'] = 'required|max:255|email|unique:user'; 
+            $rules['email'] = 'required|max:50|email|unique:user'; 
         } 
         $validatedData = $request->validate($rules, $messages);
          // menggunakan ImageHelper 
@@ -136,7 +136,7 @@ class UserController extends Controller
         } 
  
         $user->update($validatedData); 
-        return redirect()->route('backend.user.index')->with('success', 'Data berhasil diperbaharui'); 
+        return redirect()->route('v1.backend.user.index')->with('success', 'Data berhasil diperbaharui'); 
     }
 
     /**
@@ -152,7 +152,7 @@ class UserController extends Controller
         } 
     } 
     $user->delete(); 
-    return redirect()->route('backend.user.index')->with('success', 'Data berhasil dihapus'); 
+    return redirect()->route('v1.backend.user.index')->with('success', 'Data berhasil dihapus'); 
     }
 
      public function formUser() 

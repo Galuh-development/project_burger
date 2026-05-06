@@ -30,8 +30,8 @@
     <option value="">- Pilih Hak Akses -</option>
 
     <option value="{{ \App\Models\User::SUPERADMIN }}"
-        {{ old('role') == \App\Models\User::SUPERADMIN ? 'selected' : '' }}>
-        Super Admin
+        {{ old('role') == \App\Models\User::DEVELOPER ? 'selected' : '' }}>
+        Developer
     </option>
 
     <option value="{{ \App\Models\User::ADMIN }}"
@@ -46,6 +46,11 @@
 
     <option value="{{ \App\Models\User::MANAGER }}"
         {{ old('role') == \App\Models\User::MANAGER ? 'selected' : '' }}>
+        Manager
+    </option>
+
+    <option value="{{ \App\Models\User::CUSTOMER }}"
+        {{ old('role') == \App\Models\User::CUSTOMER ? 'selected' : '' }}>
         Manager
     </option>
 </select>

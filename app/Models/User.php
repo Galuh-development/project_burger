@@ -49,7 +49,7 @@ class User extends Authenticatable
     ]; 
 
      // ===== Role constants =====
-    const SUPERADMIN = '0';
+    const DEVELOPER = '0';
     const ADMIN      = '1';
     const STAFF      = '2';
     const MANAGER    = '3';

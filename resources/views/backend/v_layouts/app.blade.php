@@ -24,6 +24,34 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
+    /* --- CUSTOM BACKEND YELLOW THEME --- */
+
+/* Hover pada item dropdown user */
+.user-dd .dropdown-item:hover {
+    background: #ffc107 !important;
+    color: #212529 !important;
+}
+
+/* Warna ikon saat di-hover */
+.user-dd .dropdown-item:hover i {
+    color: #212529 !important;
+}
+
+/* Jika ada sidebar atau nav-link yang aktif/hover */
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Warna divider agar senada */
+.dropdown-divider {
+    border-top: 1px solid #eee;
+}
+
+/* Khusus tombol logout agar tetap tegas tapi kuning saat hover */
+.user-dd .dropdown-item.text-danger:hover {
+    background: #dc3545 !important; /* Tetap merah pas logout biar alert */
+    color: #fff !important;
+}
 .sidebar-link {
     background-color: transparent !important;
     transition: none !important;
@@ -86,8 +114,8 @@
                         
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //--> 
                             <!-- Dark Logo icon --> 
-                        <img src="{{ asset('images/logo brgr.png') }}" alt="homepage"class="light-logo mx-auto d-block" width="80">
-                        <div class="fs-6 fw-bold text-warning">My Burger Queen</div>
+                        <img src="{{ asset('images/logo brgr.png') }}" alt="homepage" class="light-logo mx-auto d-block" width="70">
+                        <div class="small fw-bold text-warning text-center mt-1">My Burger Queen</div>
                         
                         <!--End Logo icon --> 
                         <!-- Logo text --> 
@@ -180,7 +208,7 @@
                     </ul> 
                 </div> 
             </nav> 
-        </header> 
+    </header> 
         <!-- ============================================================== --> 
         <!-- End Topbar header --> 
         <!-- ============================================================== --> 

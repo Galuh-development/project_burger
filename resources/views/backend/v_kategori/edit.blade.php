@@ -33,8 +33,7 @@ method="post">
                         <div class="card-body"> 
                             <button type="submit" class="btn btn bg-warning">Perbaharui</button> 
                             <a href="{{ route('backend.kategori.index') }}"> 
-                                <button type="button" class="btn btn
-secondary">Kembali</button> 
+                                <button type="button" class="btn btn secondary">Kembali</button> 
                             </a> 
                         </div> 
                     </div> 

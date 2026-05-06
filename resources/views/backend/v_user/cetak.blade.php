@@ -95,14 +95,16 @@
                     <td>{{ $row->nama }}</td>
                     <td>{{ $row->email }}</td>
                     <td class="text-center">
-                        @if ($row->role == \App\Models\User::SUPERADMIN)
-                            Super Admin
+                        @if ($row->role == \App\Models\User::DEVELOPER)
+                            Developer
                         @elseif ($row->role == \App\Models\User::ADMIN)
                             Admin
                         @elseif ($row->role == \App\Models\User::STAFF)
                             Staff
                         @elseif ($row->role == \App\Models\User::MANAGER)
                             Manager
+                        @elseif ($row->role == \App\Models\User::MANAGER)
+                            Customer
                         @endif
                     </td>
                     <td class="text-center">

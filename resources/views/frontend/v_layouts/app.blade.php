@@ -42,44 +42,47 @@
   <header id="header" class="header d-flex align-items-center sticky-top bg-white shadow-sm border-bottom border-warning border-3">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       
-      <a href="#('index.html')" class="logo d-flex align-items-center me-auto me-xl-0 text-decoration-none">
-        <img src="{{ asset('images/logo brgr.png') }}" alt="logo" style="max-height: 50px;">
-        <h1 class="sitename ms-2 mb-0" style="color: #212529;"> My Burger <span class="text-warning">Queen</span></h1>
+      <a href="{{ route('v1.frontend.beranda.index') }}" class="logo d-flex align-items-center me-auto me-xl-0 text-decoration-none">
+        <img src="{{ asset('images/logo brgr.png') }}" alt="logo" style="max-height: 45px;">
+        <h1 class="sitename ms-2 mb-0" style="color: #212529; font-weight: 700; font-size: 24px;"> 
+            My Burger <span class="text-warning">Queen</span>
+        </h1>
       </a>
+
       <nav id="navmenu" class="navmenu">
-    <ul>
-        <li>
-            <a href="{{ route('v1.frontend.beranda.index') }}" class="{{ Request::is('beranda*') ? 'active' : '' }}">Beranda</a>
-        </li>
-        <li>
-            <a href="{{ route('v1.frontend.produk.index') }}" class="{{ Request::is('produk*') ? 'active' : '' }}">Menu</a>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="{{ Request::is('akun*') ? 'active' : '' }}">
-                <span>Akun</span> <i class="bi bi-chevron-down toggle-dropdown"></i>
-            </a>
-            <ul>
-                <li><a href="#">Profil Saya</a></li>
-                <li><a href="#">Pesanan Saya</a></li>
-                <li><hr class="dropdown-divider"></li>
+        <ul>
+            <li>
+                <a href="{{ route('v1.frontend.beranda.index') }}" class="{{ Request::is('beranda*') ? 'active' : '' }}">Beranda</a>
+            </li>
+            <li>
+                <a href="{{ route('v1.frontend.produk.index') }}" class="{{ Request::is('produk*') ? 'active' : '' }}">Menu</a>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="{{ Request::is('akun*') ? 'active' : '' }}">
+                    <span class="fw-bold"><i class="bi bi-person-circle me-1"></i> Akun</span> 
+                    <i class="bi bi-chevron-down toggle-dropdown ms-1"></i>
+                </a>
+                <ul>
+                    <li><a href="{{ route('v1.frontend.profile.index') }}"><i class="bi bi-person me-2"></i> Profil Saya</a></li>
+                    <li><a href="{{ route('v1.frontend.keranjang.index') }}"><i class="bi bi-cart3 me-2"></i> keranjang </a></li>
+                    <li><a href="#"><i class="bi bi-receipt me-2"></i> Pesanan Saya</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a href="#" class="text-danger" onclick="event.preventDefault(); document.getElementById('logout-frontend').submit();">
+                            <i class="bi bi-box-arrow-right me-2"></i> Keluar
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-                <!-- Link Keluar dengan Trigger JS -->
-                <li>
-                    <a href="#" class="text-danger" 
-                       onclick="event.preventDefault(); document.getElementById('logout-frontend').submit();">
-                       Keluar
-                    </a>
-                </li>
-            </ul>
+      <form id="logout-frontend" action="{{ route('v1.form.logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
 
-              <!-- Form Logout Tersembunyi (Posisikan di luar UL juga nggak apa-apa) -->
-              <form id="logout-frontend" action="{{ route('v1.form.logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-        </li>
-    </ul>
-    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-</nav>
     </div>
 </header>
 
@@ -155,89 +158,72 @@
   <div id="preloader"></div>
 
   <style>
-    /* 1. Mematikan garis merah bawaan template (biasanya menggunakan ::before) */
-  .navmenu ul li a::before {
-      display: none !important;
-      content: none !important;
-  }
-  
-  /* 2. Mematikan border-bottom jika template menggunakannya */
-  .navmenu ul li a {
-      border-bottom: none !important;
-      position: relative;
-      padding: 8px 0;
-      color: #212529 !important;
-  }
-  
-  /* 3. Memastikan hanya garis kuning kita yang muncul */
-  .navmenu ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px; 
-      bottom: -2px; 
-      left: 0;
-      background-color: #ffc107 !important; /* Kuning Burger Queen */
-      transition: width 0.3s ease-in-out;
-      display: block !important;
-  }
-  
-  /* 4. Munculkan garis kuning saat hover */
-  .navmenu ul li a:hover::after,
-  .navmenu ul li a.active::after {
-      width: 100%;
-  }
-  
-  /* 5. Tetap jaga teks agar tidak berubah warna merah */
-  .navmenu ul li a:hover {
-      color: #212529 !important;
-      background: none !important;
-  }
-  /* Warna default ikon (lingkaran abu-abu/gelap) */
-  .footer .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-right: 10px;
-      transition: 0.3s;
-      text-decoration: none;
-  }
-  
-  /* Efek Hover: Background jadi Kuning, Ikon jadi Hitam */
-  .footer .social-links a:hover {
-      background-color: #ffc107; /* Warna warning Bootstrap */
-      color: #212529;            /* Warna teks gelap agar kontras */
-      border-color: #ffc107;
-      transform: translateY(-3px); /* Sedikit efek melompat ke atas */
-  }
-  /* --- SCROLL TOP --- */
-  .scroll-top {
-    background-color: #ffc107 !important; /* Warna kuning warning */
-    color: #212529 !important;            /* Warna ikon (hitam agar kontras) */
-  }
-  
-  .scroll-top:hover {
-    background-color: #ffca2c !important; /* Kuning sedikit terang saat hover */
-    color: #000 !important;
-  }
-  
-  /* --- PRELOADER --- */
-  #preloader:before {
-    /* Mengubah warna garis putar (spinner) menjadi kuning */
-    border-top: 3px solid #ffc107 !important;
-  }
-  
-  #preloader:after {
-    /* Opsional: Jika ada lingkaran luar, beri warna kuning transparan */
-    border: 15px solid #ffc107 !important;
-    opacity: 0.1;
-  }
+   /* --- HEADER COMPACT STYLE --- */
+.header {
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #ffc107 !important;
+    height: 75px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Kunci lebar maksimal container biar gak ngelebar banget */
+.header .container {
+    max-width: 1140px; /* Standar ukuran layar yang nyaman di mata */
+    padding: 0 15px;
+}
+
+.header .logo img {
+    max-height: 40px;
+}
+
+.header .logo h1 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #212529;
+}
+
+.header .logo h1 span {
+    color: #ffc107;
+}
+
+/* --- NAVMENU SPACING --- */
+.navmenu ul {
+    gap: 10px; /* Kasih jarak antar menu biar gak rapet banget tapi gak jauh banget */
+}
+
+.navmenu a {
+    color: #444 !important;
+    font-size: 14px;
+    font-weight: 600 !important;
+    padding: 10px 15px !important;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.navmenu a:hover, .navmenu .active {
+    color: #ffc107 !important;
+    /* background-color: #fff9e6; Background soft pas hover */
+}
+
+/* --- DROPDOWN POSITIONING --- */
+.navmenu .dropdown ul {
+    border-radius: 12px !important;
+    padding: 8px 0 !important;
+    min-width: 180px;
+    border: 1px solid #eee !important;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.navmenu .dropdown ul li a {
+    padding: 10px 18px !important;
+    font-size: 14px !important;
+}
+
+/* --- FOOTER FIX (BIAR GA NGELEBAR) --- */
+.footer .container {
+    max-width: 1140px;
+}
   </style>
 <script src="{{ asset('frontend/template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('frontend/template/vendor/php-email-form/validate.js') }}"></script>

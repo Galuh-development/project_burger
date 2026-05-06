@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\login;
+namespace App\Http\Controllers\form;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function loginForm() 
 { 
     // Pakai satu view yang sama untuk Admin & Customer
-    return view('form.login', [ 
+    return view('form.v_login.login', [ 
         'judul' => 'Login Burger Queen', 
     ]); 
 } 

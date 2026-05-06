@@ -79,7 +79,7 @@
                                 <!-- Aksi -->
                                 <td>
                                     <a href="{{ route('v1.backend.produk.edit', $row->id) }}"
-                                       title="Ubah Data">
+                                        title="Ubah Data">
                                         <button type="button"
                                             class="btn btn-outline-warning btn-sm">
                                             <i class="far fa-edit"></i>
@@ -87,7 +87,7 @@
                                     </a>
 
                                     <a href="{{ route('v1.backend.produk.show', $row) }}"
-                                       title="Kelola Gambar">
+                                        title="Kelola Gambar">
                                         <button type="button"
                                             class="btn btn-outline-info btn-sm">
                                             <i class="fas fa-image"></i>

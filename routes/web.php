@@ -2,15 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () { 
-//     // return view('welcome'); 
-//     return redirect()->route('v1.backend.login'); 
-// }); 
 
 Route::get('/', function () { 
     // return view('welcome'); 
-    return redirect()->route('v1.form.login'); 
+    return redirect()->route('v1.frontend.beranda.index'); 
 }); 
+
+//============FORM==========
+// NO AUT
+Route::prefix('v1')->name('v1.')->group(function () {
+
+    Route::prefix('form')->name('form.')->group(function () {
+        //Route Register
+        Route::controller(App\Http\Controllers\form\RegisterController::class)->group(function () {
+            Route::get('register', 'registerForm')->name('register');
+            Route::post('register', 'registerProcess')->name('register.process');
+        });
+        //Route Login
+        Route::controller(App\Http\Controllers\form\LoginController::class)->group(function () {
+            Route::get('login', 'loginForm')->name('login');
+            Route::post('login', 'authenticate')->name('login.process');
+            Route::post('logout', 'logoutForm')->name('logout');
+        });
+    });
+
+});
 
 // ==========FRONTEND=============
 // NO AUT
@@ -25,13 +41,21 @@ Route::prefix('v1')->name('v1.')->group(function(){
             });
         });
 });
-// // AUT
-Route::prefix('v1')->name('v1.')->middleware(['auth', 'is_customer'] )->group(function(){
+//AUTH
+// Route untuk Customer yang sudah Login
+Route::prefix('v1')->name('v1.')->middleware(['auth', 'is_customer'])->group(function() {
     Route::prefix('frontend')->name('frontend.')->group(function() {
-        Route::prefix('cart')->name('cart.')->controller(App\Http\Controllers\frontend\CartController::class)->group(function(){
-            Route::get('/','index')->name('index');
-            Route::post('/{id}','store')->name('store');
-            Route::delete('/{id}', 'destroy')->name('destroy');
+        
+        // Grup Keranjang
+        Route::prefix('keranjang')->name('keranjang.')->controller(App\Http\Controllers\frontend\KeranjangController::class)->group(function() {
+            Route::get('/', 'index')->name('index');          
+            Route::post('/{id}', 'store')->name('store');     
+            Route::delete('/{id}', 'destroy')->name('destroy'); 
+        });
+        Route::prefix('profile')->name('profile.')->controller(App\Http\Controllers\frontend\ProfileController::class)->group(function() {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit', 'edit')->name('edit');
+            Route::put('/update', 'update')->name('update');
         });
     });
 });
@@ -40,28 +64,12 @@ Route::prefix('v1')->name('v1.')->middleware(['auth', 'is_customer'] )->group(fu
 //Route::get('/produk', [FrontProdukController::class, 'index'])->name('produk.index');
 //Route::get('/kategori', [FrontKategoriController::class, 'index'])->name('kategori.index');
 //Route::get('/produk/{id}', [FrontProdukController::class, 'show'])->name('produk.show');
-// Route::get('/kategori/{id}', [FrontKatgoriControler::class, 'show'])->name('kategori.show');
+//Route::get('/kategori/{id}', [FrontKatgoriControler::class, 'show'])->name('kategori.show');
 
 //===============================================================================================
 
 
 // ==========BACKEND============
-// NO AUT
-Route::prefix('v1')->name('v1.')->group(function () {
-
-    Route::prefix('form')->name('form.')->group(function () {
-
-        Route::controller(App\Http\Controllers\login\LoginController::class)->group(function () {
-
-            Route::get('login', 'loginForm')->name('login');
-            Route::post('login', 'authenticate')->name('login.process');
-            Route::post('logout', 'logoutForm')->name('logout');
-
-        });
-
-    });
-
-});
 //MASTER DATA 
 // AUT   
 Route::prefix('v1')->name('v1.')->middleware('auth')->group(function(){

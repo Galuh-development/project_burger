@@ -46,14 +46,16 @@
 
                                 <!-- Role -->
                                 <td>
-                                    @if ($row->role == \App\Models\User::SUPERADMIN)
-                                        <span class="badge bg-warning text-dark px-3">Super Admin</span>
+                                    @if ($row->role == \App\Models\User::DEVELOPER)
+                                        <span class="badge bg-warning text-dark px-3">Developer</span>
                                     @elseif ($row->role == \App\Models\User::ADMIN)
                                         <span class="badge bg-success text-dark border px-3">Admin</span>
                                     @elseif ($row->role == \App\Models\User::STAFF)
                                         <span class="badge bg-light text-dark px-3">Staff</span>
                                     @elseif ($row->role == \App\Models\User::MANAGER)
                                         <span class="badge bg-secondary text-white px-3">Manager</span>
+                                    @elseif ($row->role == \App\Models\User::CUSTOMER)
+                                        <span class="badge bg-secondary text-white px-3">Customer</span>
                                     @endif
                                 </td>
 

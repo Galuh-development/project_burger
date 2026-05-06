@@ -6,7 +6,7 @@
     <div class="row"> 
         <div class="col-12"> 
             <div class="card"> 
-                <form class="form-horizontal" action="{{ route('backend.produk.store') }}" method="post" enctype="multipart/form-data"> 
+                <form class="form-horizontal" action="{{ route('v1.backend.produk.store') }}" method="post" enctype="multipart/form-data"> 
                     @csrf 
  
                     <div class="card-body"> 
@@ -71,15 +71,6 @@
                                     </span> 
                                     @enderror 
                                 </div> 
-                                <div class="form-group"> 
-                                    <label>Berat</label> 
-                                    <input type="text" onkeypress="return hanyaAngka(event)" name="berat" value="{{ old('berat') }}" class="form-control @error('berat') is-invalid @enderror" placeholder="Masukkan Berat Produk"> 
-                                    @error('berat') 
-                                    <span class="invalid-feedback alert-danger" role="alert"> 
-                                        {{ $message }} 
-                                    </span> 
-                                    @enderror 
-                                </div> 
 
                                 <div class="form-group"> 
                                     <label>Stok</label> 
@@ -96,7 +87,7 @@
                     <div class="border-top"> 
                         <div class="card-body"> 
                             <button type="submit" class="btn btn bg-warning">Simpan</button> 
-                            <a href="{{ route('backend.produk.index') }}"> 
+                            <a href="{{ route('v1.backend.produk.index') }}"> 
                                 <button type="button" class="btn btn-secondary">Kembali</button> 
                             </a> 
                         </div> 
